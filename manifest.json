@@ -1,0 +1,53 @@
+{
+  "name": "Salesloft",
+  "version": "0.0.1",
+  "description": "description",
+  "tags": [
+    "incoming"
+  ],
+  "ui": false,
+  "picture": "picture.png",
+  "admin": "admin",
+  "readme": "readme.md",
+  "private_settings": [
+    {
+      "name": "api_key",
+      "title": "Salesloft API Key",
+      "type": "string",
+      "description": "Salesloft API Key can be created using https://accounts.salesloft.com/oauth/applications"
+    },
+    {
+      "name": "account_attributes_inbound",
+      "title": "List of account fields to fetch from Salesloft",
+      "type": "array",
+      "format": "select",
+      "options": {
+          "loadOptions": "/fields-account-in"
+      }
+    },
+    {
+      "name": "person_attributes_inbound",
+      "title": "List of person fields to fetch from Salesloft",
+      "type": "array",
+      "format": "select",
+      "options": {
+        "loadOptions": "/fields-person-in"
+      }
+    }
+  ],
+  "settings": [],
+  "resources": [],
+  "subscriptions": [],
+  "schedules" : [
+    {
+      "url": "/fetch",
+      "type": "cron",
+      "value": "*/30 * * * *"
+    },
+    {
+      "url": "/status",
+      "type": "cron",
+      "value": "*/30 * * * *"
+    }
+  ]
+}

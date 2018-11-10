@@ -1,0 +1,121 @@
+{
+  "notification_id": "f124005a-92e6-4554-a556-d294ed63cdae",
+  "configuration": {
+      "id": "12345",
+      "organization": "unittesting.hullapp.io",
+      "secret": "12345"
+  },
+  "connector": {
+      "description": "Testing Connector",
+      "tags": [],
+      "source_url": "",
+      "terms_of_service_url": null,
+      "private_settings": {
+          "api_key": "123456789",
+          "account_attributes_inbound": [
+            "domain",
+            "name",
+            "last_contacted_at",
+            "do_not_contact",
+            "people_count",
+            "last_contacted_by_id"
+          ],
+          "person_attributes_inbound": [
+            "first_name",
+            "last_name",
+            "email",
+            "last_replied_at",
+            "title",
+            "emails_bounced_count",
+            "last_contacted_by_id"
+          ],
+          "account_last_sync_at": 1541754443,
+          "person_last_sync_at": 1541754443
+      },
+      "index": "https://hull-closeio-dev.herokuapp.com/",
+      "name": "Close.io",
+      "extra": {},
+      "settings": {},
+      "type": "ship",
+      "manifest": {
+          "name": "Salesloft",
+          "version": "0.0.1",
+          "description": "description",
+          "tags": [
+            "incoming"
+          ],
+          "ui": false,
+          "picture": "picture.png",
+          "admin": "admin",
+          "readme": "readme.md",
+          "private_settings": [
+            {
+              "name": "api_key",
+              "title": "Salesloft API Key",
+              "type": "string",
+              "description": "Salesloft API Key can be created using https://accounts.salesloft.com/oauth/applications"
+            },
+            {
+              "name": "account_attributes_inbound",
+              "title": "List of account fields to fetch from Salesloft",
+              "type": "array",
+              "format": "select",
+              "options": {
+                  "loadOptions": "/fields-account-in"
+              }
+            },
+            {
+              "name": "person_attributes_inbound",
+              "title": "List of person fields to fetch from Salesloft",
+              "type": "array",
+              "format": "select",
+              "options": {
+                "loadOptions": "/fields-person-in"
+              }
+            }
+          ],
+          "settings": [],
+          "resources": [],
+          "subscriptions": [],
+          "schedules" : [
+            {
+              "url": "/fetch",
+              "type": "cron",
+              "value": "*/30 * * * *"
+            },
+            {
+              "url": "/status",
+              "type": "cron",
+              "value": "*/30 * * * *"
+            }
+          ]
+      },
+      "secret": "12345",
+      "ends_at": null,
+      "updated_at": "2018-03-30T14:36:02Z",
+      "status": {
+          "id": "12345",
+          "name": "Salesloft",
+          "status": "ok",
+          "messages": [],
+          "updated_at": "2018-03-12T20:02:26Z",
+          "schedules": [
+              {
+                  "url": "/status",
+                  "type": "cron",
+                  "value": "*/30 * * * *"
+              }
+          ]
+      },
+      "starts_at": null,
+      "id": "12345",
+      "picture": "",
+      "homepage_url": "",
+      "resources": {},
+      "manifest_url": "",
+      "created_at": "2018-03-12T19:36:19Z",
+      "translations": {},
+      "privacy_policy_url": null
+  },
+  "segments": []
+}

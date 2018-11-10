@@ -1,0 +1,73 @@
+{
+  "metadata": {
+      "filtering": {},
+      "paging": {
+          "per_page": 25,
+          "current_page": 1,
+          "next_page": 2,
+          "prev_page": null
+      },
+      "sorting": {
+          "sort_by": "updated_at",
+          "sort_direction": "DESC NULLS LAST"
+      }
+  },
+  "data": [
+      {
+          "id": 1,
+          "created_at": "2017-12-21T14:18:34.130819+01:00",
+          "updated_at": "2018-11-09T09:30:08.117804+01:00",
+          "archived_at": null,
+          "name": "Unknown",
+          "domain": "unknown.com",
+          "conversational_name": null,
+          "description": "",
+          "phone": null,
+          "website": "http://unknown.com",
+          "linkedin_url": null,
+          "twitter_handle": "https://twitter.com/Unknown",
+          "street": "1 rue des inconnus",
+          "city": "paris",
+          "state": null,
+          "postal_code": "75010",
+          "country": "France",
+          "locale": "Europe/Amsterdam",
+          "industry": "Internet",
+          "company_type": "Saas",
+          "founded": null,
+          "revenue_range": null,
+          "size": "0",
+          "crm_id": null,
+          "crm_url": null,
+          "crm_object_type": "account",
+          "owner_crm_id": null,
+          "last_contacted_at": "2018-10-15T17:46:53.119149+02:00",
+          "last_contacted_type": "email",
+          "do_not_contact": false,
+          "custom_fields": {},
+          "tags": [],
+          "counts": {
+              "people": 23
+          },
+          "owner": {
+              "_href": "https://api.salesloft.com/v2/users/1",
+              "id": 1
+          },
+          "creator": {
+              "_href": "https://api.salesloft.com/v2/users/1",
+              "id": 1
+          },
+          "last_contacted_by": {
+              "_href": "https://api.salesloft.com/v2/users/1",
+              "id": 1
+          },
+          "last_contacted_person": {
+              "_href": "https://api.salesloft.com/v2/people/1",
+              "id": 1
+          },
+          "company_stage": {
+              "id": 4
+          }
+      }
+  ]
+}
