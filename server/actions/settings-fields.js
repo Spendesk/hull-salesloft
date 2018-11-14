@@ -8,8 +8,7 @@ const ACCOUNT_FIELDDEFS = require("../lib/account-fielddefs");
 const PERSON_FIELDDEFS = require("../lib/person-fielddefs");
 
 function fieldsAccountInbound(req: THullRequest, res: $Response): $Response {
-  const fields = _.filter(ACCOUNT_FIELDDEFS, { in: true });
-  const options = _.map(fields, f => {
+  const options = _.map(ACCOUNT_FIELDDEFS, f => {
     return { value: f.id, label: f.label };
   });
 
@@ -17,8 +16,7 @@ function fieldsAccountInbound(req: THullRequest, res: $Response): $Response {
 }
 
 function fieldsPersonInbound(req: THullRequest, res: $Response): $Response {
-  const fields = _.filter(PERSON_FIELDDEFS, { in: true });
-  const options = _.map(fields, f => {
+  const options = _.map(PERSON_FIELDDEFS, f => {
     return { value: f.id, label: f.label };
   });
 

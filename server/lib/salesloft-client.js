@@ -43,7 +43,7 @@ class SalesloftClient {
       });
 
     const throttle = throttlePool[this.apiKey];
-  
+
     this.agent = superagent
       .agent()
       .use(throttle.plugin())
@@ -61,16 +61,16 @@ class SalesloftClient {
         const remaining = _.get(res.header, "x-ratelimit-remaining-minute");
 
         if (remaining !== undefined) {
-          this.metricsClient.value("connector.service_api.remaining", remaining);
+          this.hullMetric.value("connector.service_api.remaining", remaining);
         }
 
         if (limit !== undefined) {
-          this.metricsClient.value("connector.service_api.limit", limit);
+          this.hullMetric.value("connector.service_api.limit", limit);
         }
       })
       .set({
         "Content-Type": "application/json",
-        Authorization: `Basic ${this.apiKey}`
+        Authorization: `Bearer ${this.apiKey}`
       });
   }
 
@@ -104,9 +104,7 @@ class SalesloftClient {
         return this.listAccounts({
           page,
           per_page: 100,
-          updated_at: {
-            gt: updatedAfter.toISODate()
-          }
+          "updated_at[gt]": updatedAfter.toISODate()
         }).then(res => {
           push(res.body.data);
 
@@ -114,7 +112,7 @@ class SalesloftClient {
             list(page + 1);
           }
         });
-      };
+      }
 
       return list();
     });
@@ -126,9 +124,7 @@ class SalesloftClient {
         return this.listPeople({
           page,
           per_page: 100,
-          updated_at: {
-            gt: updatedAfter.toISODate()
-          }
+          "updated_at[gt]": updatedAfter.toISODate()
         }).then(res => {
           push(res.body.data);
 

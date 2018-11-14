@@ -4,6 +4,7 @@ import type { THullReqContext, THullConnector } from "hull";
 import type {
   HullMetrics,
   HullClient,
+  HullClientLogger,
   SalesloftConnectorSettings,
   SalesloftClientConfiguration,
   SalesloftMappingConfiguration
@@ -21,6 +22,7 @@ const BASE_API_URL = "https://api.salesloft.com/v2";
 class SyncAgent {
   hullMetric: HullMetrics;
   hullClient: HullClient;
+  hullLogger: HullClientLogger;
   hullConnector: THullConnector;
   helpers: Object;
   privateSettings: SalesloftConnectorSettings;

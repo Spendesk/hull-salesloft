@@ -15,7 +15,7 @@ function server(app: $Application): $Application {
     "/fields-account-in",
     cors(),
     ...credsFromQueryMiddlewares(),
-    actions.fieldAccountInbound
+    actions.fieldsAccountInbound
   );
   app.get(
     "/fields-person-in",
