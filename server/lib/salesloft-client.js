@@ -99,42 +99,64 @@ class SalesloftClient {
   }
 
   listAccountsStream(updatedAfter: DateTime): Readable {
+    const accountsQuery = { 
+      per_page: 100,
+      "updated_at[gt]": updatedAfter.toISODate(),
+      include_paging_counts: 1
+    };
+
     return promiseToReadableStream(push => {
-      const list = (page = 1) => {
-        return this.listAccounts({
-          page,
-          per_page: 100,
-          "updated_at[gt]": updatedAfter.toISODate()
-        }).then(res => {
-          push(res.body.data);
+      return this.listAccounts(_.merge(accountsQuery, { page: 1 })).then(res => {
+        push(res.body.data);
 
-          if (res.body.data.length !== 0) {
-            list(page + 1);
+        const apiOps = [];
+        if (
+          _.get(res.body, "metadata.paging.total_pages")
+        ) {
+          const totalPages = res.body.metadata.paging.total_pages;
+
+          for (let page = 2; page < totalPages; page += 1) {
+            apiOps.push(this.listPeople(_.merge(accountsQuery, { page })));
           }
-        });
-      }
+        }
 
-      return list();
+        return Promise.all(apiOps).then(results => {
+          results.forEach(result => {
+            push(result.body.data);
+          });
+        });
+      });
     });
   }
 
   listPeopleStream(updatedAfter: DateTime) {
+    const peopleQuery = { 
+      per_page: 100,
+      "updated_at[gt]": updatedAfter.toISODate(),
+      include_paging_counts: 1
+    };
+
     return promiseToReadableStream(push => {
-      const list = (page = 1) => {
-        return this.listPeople({
-          page,
-          per_page: 100,
-          "updated_at[gt]": updatedAfter.toISODate()
-        }).then(res => {
-          push(res.body.data);
+      return this.listPeople(_.merge(peopleQuery, { page: 1 })).then(res => {
+        push(res.body.data);
 
-          if (res.body.data.length !== 0) {
-            list(page + 1);
+        const apiOps = [];
+        if (
+          _.get(res.body, "metadata.paging.total_pages")
+        ) {
+          const totalPages = res.body.metadata.paging.total_pages;
+
+          for (let page = 2; page < totalPages; page += 1) {
+            apiOps.push(this.listPeople(_.merge(peopleQuery, { page })));
           }
-        });
-      };
+        }
 
-      return list();
+        return Promise.all(apiOps).then(results => {
+          results.forEach(result => {
+            push(result.body.data);
+          });
+        });
+      });
     });
   }
 

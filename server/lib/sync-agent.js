@@ -124,7 +124,7 @@ class SyncAgent {
       return Promise.all(
         people.map(person => {
           const hullUser = this.hullClient.asUser({
-            email: person.email,
+            email: person.email_address,
             anonymous_id: `salesloft:${person.id}`
           });
           const hullUserAttributes = this.salesloftMapping.mapSalesloftPersonToHull(

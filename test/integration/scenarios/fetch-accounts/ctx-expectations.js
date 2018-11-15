@@ -25,7 +25,7 @@ module.exports = ctxMock => {
 
   expect(ctxMock.client.asAccount.mock.calls[0]).toEqual([expectedAccountIdent]);
   expect(ctxMock.client.traits.mock.calls[0][0]).toEqual(accountTraits);
-  expect(ctxMock.metric.increment.mock.calls).toHaveLength(2);
+  expect(ctxMock.metric.increment.mock.calls).toHaveLength(1);
   expect(ctxMock.metric.increment.mock.calls[0]).toEqual([
     "ship.service_api.call",
     1,
@@ -38,7 +38,7 @@ module.exports = ctxMock => {
     ]
   ]);
 
-  expect(ctxMock.client.logger.debug.mock.calls).toHaveLength(2); // debug calls from super-agent
+  expect(ctxMock.client.logger.debug.mock.calls).toHaveLength(1); // debug calls from super-agent
   expect(ctxMock.client.logger.error.mock.calls).toHaveLength(0);
 
   expect(ctxMock.client.logger.info.mock.calls).toHaveLength(4);
