@@ -30,7 +30,7 @@ describe("SyncAgent", () => {
       ctxMock.connector = schedulerPayload.connector;
       ctxMock.ship = schedulerPayload.connector;
       const syncAgent = new SyncAgent(ctxMock);
-      
+
       require("./scenarios/fetch-accounts/api-response-expectations")(nock);
       
       return syncAgent.fetchUpdatedAccounts().then(() => {

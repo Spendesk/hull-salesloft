@@ -99,9 +99,9 @@ class SalesloftClient {
   }
 
   listAccountsStream(updatedAfter: DateTime): Readable {
-    const accountsQuery = { 
+    const accountsQuery = {
       per_page: 100,
-      "updated_at[gt]": updatedAfter.toISODate(),
+      updated_at: { gt: updatedAfter.toISODate() },
       include_paging_counts: 1
     };
 
@@ -115,8 +115,8 @@ class SalesloftClient {
         ) {
           const totalPages = res.body.metadata.paging.total_pages;
 
-          for (let page = 2; page < totalPages; page += 1) {
-            apiOps.push(this.listPeople(_.merge(accountsQuery, { page })));
+          for (let page = 2; page <= totalPages; page++) {
+            apiOps.push(this.listAccounts(_.merge(accountsQuery, { page })));
           }
         }
 
@@ -130,9 +130,9 @@ class SalesloftClient {
   }
 
   listPeopleStream(updatedAfter: DateTime) {
-    const peopleQuery = { 
+    const peopleQuery = {
       per_page: 100,
-      "updated_at[gt]": updatedAfter.toISODate(),
+      updated_at: { gt: updatedAfter.toISODate() },
       include_paging_counts: 1
     };
 
